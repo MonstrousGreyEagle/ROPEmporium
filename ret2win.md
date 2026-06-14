@@ -5,7 +5,7 @@ the binary contains a function to read the flag, and a function that let us over
 
 the only tricky part of this problem is to not mess the rbp and rsp as the 'ret2win' function use ret for the cat command
 
-![](../ROPEmporium/img/ret2win-1781401424516.webp)
+![](./img/ret2win-1781401424516.webp)
 
 to that end, we just need to skip the first two command of the function
 
