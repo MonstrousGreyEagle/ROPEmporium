@@ -1,5 +1,5 @@
-![](../ROPEmporium/img/ret2win-1781401327194.webp)
-![](../ROPEmporium/img/ret2win-1781401317281.webp)
+![](./img/ret2win-1781401327194.webp)
+![](./img/ret2win-1781401317281.webp)
 
 the binary contains a function to read the flag, and a function that let us overflow the buffer
 
