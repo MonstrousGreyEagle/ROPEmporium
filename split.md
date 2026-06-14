@@ -6,4 +6,11 @@ in this problem we also have a way to overflow the buffer. However, the usefulFu
 ![](./split-1781404806414.webp)
 
 checking ROPgadgets, we acquire a way to manipulate rdi
-checking the binary memory,
+
+![](./split-1781404855216.webp)
+
+checking the binary memory, we find /bin/cat flag.txt, how convenient
+
+![](./split-1781404892788.webp)
+
+viewing hex data in ida grant us the exact address, given that the binary has no 
