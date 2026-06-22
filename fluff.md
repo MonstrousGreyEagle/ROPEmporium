@@ -3,4 +3,6 @@ now this is a hard one
 
 ![](./fluff-1782130394835.webp)
 
-we are provide
+we are provided with no convenient gadgets for altering a memory space
+
+instead we are provided with some 
