@@ -19,3 +19,9 @@ now, the tricky part is dealing with call |r12+rbx * 8|
 our candidates exist in the plt sections, which are pwnme and ret2win
 
 ![](./ret2csu-1782143093343.webp)
+
+![](./ret2csu-1782143132302.webp)
+
+bad news! pwnme modify rdx while ret2win exit, breaking the program
+
+that left us with one hope: looking in
