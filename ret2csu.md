@@ -25,3 +25,7 @@ our candidates exist in the plt sections, which are pwnme and ret2win
 bad news! pwnme modify rdx while ret2win exit, breaking the program
 
 that left us with one hope: looking in the data section of the binary for some lucky finds
+
+![](./ret2csu-1782143352254.webp)
+
+with patient, we find a perfect candidate, which is a gadget that does absolutely nothing and return
