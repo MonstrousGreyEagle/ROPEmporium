@@ -5,4 +5,7 @@ now this is a hard one
 
 we are provided with no convenient gadgets for altering a memory space
 
-instead we are provided with some 
+instead we are provided with some peculiar gadgets as of below
+
+![](./fluff-1782130493030.webp)
+
