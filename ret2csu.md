@@ -12,8 +12,10 @@ now we dont exactly have those convenient gadget to manipulate rdx
 
 ![](./ret2csu-1782142948599.webp)
 
-searching the binary using objdump, we discover our necessary aparatus
+searching the binary using objdump, we discover our necessary apparatus
 
 now, the tricky part is dealing with call |r12+rbx * 8|
 
-our candidates ex
+our candidates exist in the plt sections, which are pwnme and ret2win
+
+![](./ret2csu-1782143093343.webp)
