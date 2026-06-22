@@ -9,4 +9,5 @@ instead we are provided with some peculiar gadgets as of below
 
 ![](./fluff-1782130493030.webp)
 
-bextr rdx,rcx,rbx let us modify
+bextr rdx,rcx,rbx let us provide rbx an arbitary value, while xlat let us manipulate al with rbx and stos al,es:(rdi) let us store a single byte from al to the memory at rdi
+
