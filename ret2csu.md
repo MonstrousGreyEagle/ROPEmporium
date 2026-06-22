@@ -24,4 +24,4 @@ our candidates exist in the plt sections, which are pwnme and ret2win
 
 bad news! pwnme modify rdx while ret2win exit, breaking the program
 
-that left us with one hope: looking in
+that left us with one hope: looking in the data section of the binary for some lucky finds
