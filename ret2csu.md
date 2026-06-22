@@ -4,8 +4,8 @@ the win function exist in the plt section, which mean that we can call it direct
 
 ![](./ret2csu-1782142765106.webp)
 
-unfortunately, ret2win check for r
+unfortunately, ret2win check for rdi, rsi and rdx for specific values
 
 ![](./ret2csu-1782142735031.webp)
 
-
+now we dont exactly have those convenient gadget to manipulate registers
