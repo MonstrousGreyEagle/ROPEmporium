@@ -13,7 +13,8 @@ bextr rdx,rcx,rbx let us provide rbx an arbitary value, while xlat let us manipu
 
 all left to do is find every single byte we need in the binary to craft the flag address, one byte at a time. How rigorous!
 
-also be careful, as the rop chain is sup
+also be careful, as the rop chain is so long that the pwnme buffer cant really hold it all in one go.
+Restart the challenge and split the chain into two
 
 ```
 #!/usr/bin/env python3
