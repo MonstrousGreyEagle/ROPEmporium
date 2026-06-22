@@ -9,3 +9,4 @@ instead we are provided with some peculiar gadgets as of below
 
 ![](./fluff-1782130493030.webp)
 
+bextr rdx,rcx,rbx let us modify
