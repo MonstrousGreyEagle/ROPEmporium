@@ -6,7 +6,7 @@ no bypass this, we can use xor, which coveniently exist as a gadget
 
 ![](../img/badchars-1782100129000.webp)
 
-the rest of the challenge is the same as [write4](write4.md)
+the rest of the challenge is the same as [write4](../i386/write4.md)
 
 beware, as the rop chain may be too long for the buffer to hold, necessitate the need to restart the challenge
 
