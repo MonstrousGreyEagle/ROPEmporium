@@ -1,11 +1,11 @@
-![](./img/ret2win-1781401327194.webp)
-![](./img/ret2win-1781401317281.webp)
+![](../img/ret2win-1781401327194.webp)
+![](../img/ret2win-1781401317281.webp)
 
 the binary contains a function to read the flag, and a function that let us overflow the buffer
 
 the only tricky part of this problem is to not mess the rbp and rsp as the 'ret2win' function use ret for the cat command
 
-![](./img/ret2win-1781401424516.webp)
+![](../img/ret2win-1781401424516.webp)
 
 to that end, we just need to skip the first two command of the function
 
