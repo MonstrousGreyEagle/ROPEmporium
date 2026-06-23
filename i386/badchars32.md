@@ -2,4 +2,6 @@
 
 pwnme check the buffer after read to see if some particular character is included
 
-this leave us with
+to bypass this, we can hash the flag address in some way to bypass the check
+
+![](./badchars32-1782212396419.webp)
