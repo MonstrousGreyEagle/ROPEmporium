@@ -2,4 +2,8 @@
 
 the challenge want us to call ret2win
 
-luckily, 
+luckily, the challenge also provide us an easy rop chain 
+
+![](./pivot32-1782305170871.webp)
+
+with this, we can call puts from plt to print out foothold
