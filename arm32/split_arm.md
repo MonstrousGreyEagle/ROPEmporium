@@ -1,10 +1,10 @@
-![](./split_arm-1782447761759.webp)
+![](../img/split_arm-1782447761759.webp)
 
-![](./split_arm-1782447769896.webp)
+![](../img/split_arm-1782447769896.webp)
 
 theres a function that execute system() in the binary
 
-![](./split_arm-1782447797008.webp)
+![](../img/split_arm-1782447797008.webp)
 
 there also exist a "/bin/cat flag.txt" in the bss
 
