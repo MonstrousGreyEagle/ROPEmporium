@@ -2,13 +2,14 @@
 
 there exist three "callme" function in this binary
 
-p)
+![](./callme%201-1782440043403.webp)
 
-upon inspection in ida, it seems that those call me function check for rdi, rsi, rdx for specific values and each print out part of the flag
+upon inspection in ida, it seems that those call me function check r0,r1,r2 for specific values and each print out part of the flag
 
-![](../img/callme-1782095178540.webp)
+![](./callme%201-1782440070948.webp)
 
-paired with the fact that there is no pie, building a rop chain should be easy enough
+with a gadget to manipulate those register
+
 
 ```
 #!/usr/bin/env python3
