@@ -2,9 +2,9 @@
 
 there exist three "callme" function in this binary
 
-![](../img/callme-1782095099811.webp)
+p)
 
-upon inspection in gdb, it seems that those call me function check for rdi, rsi, rdx for specific values and each print out part of the flag
+upon inspection in ida, it seems that those call me function check for rdi, rsi, rdx for specific values and each print out part of the flag
 
 ![](../img/callme-1782095178540.webp)
 
